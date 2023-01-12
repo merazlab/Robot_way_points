@@ -16,7 +16,7 @@ def test_normal_operation():
     time.sleep(1)
     controller.set_trajectory(np.array([[4.0, 3.0], [5.0, 3.0]]))
 
-    time.sleep(4)
+    time.sleep(5)
 
     # now set a different trajectory before the first trajectory completes
 

@@ -21,19 +21,19 @@ class SimulatedRobot:
 
     def set_navigation_command(self, waypoint):
 
-        print(f"Commanding robot to move to {waypoint}")
+        # print(f"Commanding robot to move to {waypoint}")
 
         def update():
             time.sleep(random.uniform(1.0, 2.0))
 
             print(f"Robot is now at {waypoint}")
 
-            self.position = waypoint
+            # self.position = waypoint
 
             self.update_position_callback(waypoint)
 
         thread_update = Thread(target=update)
-
+        thread_update.start()
 
 class SimulatedRobotWithCommunicationDelay:
 
@@ -44,13 +44,13 @@ class SimulatedRobotWithCommunicationDelay:
         self.position = initial_position
 
     def set_position(self, position):
-
         def update():
             time.sleep(random.uniform(0.0, 2.0))
 
             self.position = position
 
         thread_update = Thread(target=update)
+        thread_update.start()
 
     def get_position(self):
         return self.position
@@ -65,3 +65,4 @@ class SimulatedRobotWithCommunicationDelay:
             self._robot.set_navigation_command(waypoint)
 
         thread_update = Thread(target=update)
+        thread_update.start()
